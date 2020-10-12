@@ -1,0 +1,9 @@
+.channel {
+  background-color: greenyellow;
+  cursor: pointer;
+}
+
+.channel:hover {
+  background-color: grey;
+  color: white;
+}

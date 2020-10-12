@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import User from "./features/User";
+import Login from "./features/Login";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="app">
-      <header className="app__header">{user ? <Home /> : <User />}</header>
+      <header className="app__header">{user ? <Home /> : <Login />}</header>
     </div>
   );
 }

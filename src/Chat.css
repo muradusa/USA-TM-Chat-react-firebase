@@ -1,0 +1,8 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__body {
+  flex: 1;
+}

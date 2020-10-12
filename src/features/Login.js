@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import "./User.css";
+import "./Login.css";
 import { Button } from "@material-ui/core";
 import { auth, provider } from "../firebase";
 
-function User() {
+function Login() {
   const loginUser = () => {
     auth.signInWithPopup(provider).catch((error) => alert(error.message));
   };
@@ -17,4 +17,4 @@ function User() {
   );
 }
 
-export default User;
+export default Login;
