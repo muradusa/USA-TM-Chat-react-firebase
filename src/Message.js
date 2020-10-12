@@ -4,14 +4,13 @@ import { selectUser } from "./features/userSlice";
 import "./Message.css";
 import { useSelector, useDispatch } from "react-redux";
 
-function Message() {
-  const user = useSelector(selectUser);
+function Message({ message, timestamp, user }) {
   return (
     <div className="message">
       <Avatar src={user.photo} />
       <p>{user.displayName}</p>
-      <small>Timestamp</small>
-      <p>message text</p>
+      <small>{new Date(timestamp?.toDate()).toUTCString()}</small>
+      <p>{message}</p>
     </div>
   );
 }
