@@ -21,3 +21,23 @@
   -ms-overflow-style: none; /*EI and Edge */
   scrollbar-width: none; /*Firefox */
 }
+
+.form {
+  display: flex;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.input:hover {
+  border: 0.2px solid gray;
+  cursor: pointer;
+}
+
+.input:active {
+  border: none;
+}

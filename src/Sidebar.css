@@ -1,9 +1,41 @@
+.sidebar {
+  background-color: whitesmoke;
+}
+
 .channel {
-  background-color: greenyellow;
   cursor: pointer;
 }
 
 .channel:hover {
   background-color: grey;
   color: white;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__channels {
+  flex: 1;
+}
+
+.sidebar__userInfo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 5px;
+  border-top: 1px solid gray;
+  background-color: whitesmoke;
+}
+
+.sidebar__userInfo:hover {
+  background-color: gray;
+  color: white;
+}
+
+.sidebar__userInfo h5 {
+  margin-left: 5px;
 }

@@ -53,15 +53,21 @@ function Chat() {
         ))}
       </div>
       <div className="chat__message">
-        <form action="submit">
+        <form className="form" action="submit">
           <input
+            className="input"
             type="text"
             disabled={!channelId}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={`Message # ${channelName ? channelName : "Heroku"}`}
           />
-          <button type="submit" onClick={submitMessage} disabled={!channelId}>
+          <button
+            hidden
+            // type="submit"
+            onClick={submitMessage}
+            disabled={!channelId}
+          >
             submit
           </button>
         </form>

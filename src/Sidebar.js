@@ -4,8 +4,11 @@ import { setChannelInfo } from "./features/appSlice";
 import { useSelector, useDispatch } from "react-redux";
 import db, { auth } from "./firebase";
 import "./Sidebar.css";
+import { selectUser } from "./features/userSlice";
+import { Button, Avatar } from "@material-ui/core";
 
 function Sidebar() {
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const [channels, setChannels] = useState([]);
 
@@ -31,23 +34,33 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <h1>Sidebar</h1>
-      <Add onClick={handleAddChannel} />
-      {channels.map(({ id, channel }) => (
-        <div
-          onClick={() =>
-            dispatch(
-              setChannelInfo({
-                channelId: id,
-                channelName: channel.channelName,
-              })
-            )
-          }
-          className="channel"
-        >
-          <p>{channel.channelName}</p>
+      <div className="sidebar__header">
+        <h1>Sidebar</h1>
+        <Add onClick={handleAddChannel} />
+      </div>
+      <div className="sidebar__channels">
+        {channels.map(({ id, channel }) => (
+          <div
+            onClick={() =>
+              dispatch(
+                setChannelInfo({
+                  channelId: id,
+                  channelName: channel.channelName,
+                })
+              )
+            }
+            className="channel"
+          >
+            <p>{channel.channelName}</p>
+          </div>
+        ))}
+      </div>
+      <div className="sidebar__user">
+        <div onClick={() => auth.signOut()} className="sidebar__userInfo">
+          <Avatar src={user.photo} />
+          <h5>{user.displayName}</h5>
         </div>
-      ))}
+      </div>
     </div>
   );
 }
