@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import db, { auth } from "./firebase";
 import "./Sidebar.css";
 import { selectUser } from "./features/userSlice";
-import { Button, Avatar } from "@material-ui/core";
+import { Button, Avatar, IconButton } from "@material-ui/core";
 
 function Sidebar() {
   const user = useSelector(selectUser);
@@ -35,8 +35,10 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <h1>Sidebar</h1>
-        <Add onClick={handleAddChannel} />
+        <h1># Channels</h1>
+        <IconButton className="add" onClick={handleAddChannel}>
+          <Add style={{ fontSize: 40, color: "white" }} />
+        </IconButton>
       </div>
       <div className="sidebar__channels">
         {channels.map(({ id, channel }) => (
@@ -51,14 +53,14 @@ function Sidebar() {
             }
             className="channel"
           >
-            <p>{channel.channelName}</p>
+            <span>#</span> <p>{channel.channelName}</p>
           </div>
         ))}
       </div>
       <div className="sidebar__user">
         <div onClick={() => auth.signOut()} className="sidebar__userInfo">
           <Avatar src={user.photo} />
-          <h5>{user.displayName}</h5>
+          <h4>{user.displayName}</h4>
         </div>
       </div>
     </div>

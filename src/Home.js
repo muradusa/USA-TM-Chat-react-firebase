@@ -9,10 +9,13 @@ import Chat from "./Chat";
 function Home() {
   return (
     <div className="home">
-      <div className="home__header"></div>
       <div className="home__main">
-        <Sidebar />
-        <Chat />
+        <div className="home__sidebar">
+          <Sidebar />
+        </div>
+        <div className="home__chat">
+          <Chat />
+        </div>
       </div>
     </div>
   );

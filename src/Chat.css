@@ -1,10 +1,17 @@
 .chat {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
+}
+
+.chat__header {
+  font-size: 20px;
+  border-bottom: 0.1px solid white;
+  padding: 12px;
 }
 
 .chat__body {
+  padding-top: 15px;
   flex: 1;
   overflow: scroll;
 }

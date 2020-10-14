@@ -41,7 +41,11 @@ function Chat() {
   return (
     <div className="chat">
       <div className="chat__header">
-        <h2>{channelName ? channelName : "Heroku"}</h2>
+        <h2>
+          {channelName
+            ? `# ${channelName}`
+            : "Please select a channel to chat or create a new one"}
+        </h2>
       </div>
       <div className="chat__body">
         {messages.map((message) => (

@@ -6,12 +6,15 @@
   display: flex;
 }
 
-.sidebar {
+.home__sidebar {
   flex: 0.3;
-  background-color: aqua;
+  /* height: 100vh; */
+  border-right: 0.2px solid white;
 }
 
-.chat {
+.home__chat {
   flex: 0.7;
-  background-color: bisque;
+  background-color: gray;
+  color: white;
+  /* height: 100vh; */
 }
