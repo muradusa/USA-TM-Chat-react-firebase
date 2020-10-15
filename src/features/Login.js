@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import logo from "../images/ustmchatLogo.png";
 import "./Login.css";
 import { Button } from "@material-ui/core";
 import { auth, provider } from "../firebase";
@@ -11,8 +11,10 @@ function Login() {
 
   return (
     <div className="user">
-      <h1>Login Page</h1>
-      <Button onClick={loginUser}>Log In</Button>
+      <img src={logo} alt="" />
+      <Button variant="contained" color="primary" onClick={loginUser}>
+        Log In with Google
+      </Button>
     </div>
   );
 }

@@ -7,10 +7,18 @@ import { useSelector, useDispatch } from "react-redux";
 function Message({ message, timestamp, user }) {
   return (
     <div className="message">
-      <Avatar src={user.photo} />
-      <p>{user.displayName}</p>
-      <small>{new Date(timestamp?.toDate()).toUTCString()}</small>
-      <p>{message}</p>
+      <div className="message__avatar">
+        <Avatar src={user.photo} />
+      </div>
+      <div className="message__body">
+        <div className="message__user">
+          <p>{user.displayName}</p>
+          <small>{new Date(timestamp?.toDate()).toUTCString()}</small>
+        </div>
+        <div className="message__chat">
+          <p>{message}</p>
+        </div>
+      </div>
     </div>
   );
 }

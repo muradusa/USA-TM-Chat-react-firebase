@@ -14,7 +14,7 @@
 
 .home__chat {
   flex: 0.7;
-  background-color: gray;
+  background-color: rgb(97, 94, 94);
   color: white;
   /* height: 100vh; */
 }

@@ -63,3 +63,14 @@
 .sidebar__userInfo h4:hover {
   color: black;
 }
+
+/* @media screen (max-width: 780) {
+  .sidebar__header {
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+  }
+} */

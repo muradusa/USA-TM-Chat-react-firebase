@@ -2,4 +2,9 @@
   display: grid;
   place-items: center;
   height: 100vh;
+  background-color: grey;
+}
+
+.user img {
+  border-radius: 10px;
 }

@@ -64,7 +64,9 @@ function Chat() {
             disabled={!channelId}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={`Message # ${channelName ? channelName : "Heroku"}`}
+            placeholder={`Message # ${
+              channelName ? channelName : "Select a channel to start chatting"
+            }`}
           />
           <button
             hidden
