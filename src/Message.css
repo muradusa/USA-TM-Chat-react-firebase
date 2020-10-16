@@ -17,6 +17,7 @@
 .message__user {
   display: flex;
   align-items: center;
+  /* padding-bottom: 3px; */
 }
 
 .message__user p {
@@ -26,10 +27,19 @@
 }
 
 .message__user small {
-  font-size: x-small;
-  color: black;
+  font-size: small;
+  font-style: italic;
+  color: rgb(235, 230, 230);
   font-weight: 600;
 }
 
+.message__body:hover {
+  color: black;
+}
+
 .message__chat p {
+  margin-top: 5px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: larger;
 }
