@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import db from "./firebase";
 import firebase from "firebase";
 import { selectUser } from "./features/userSlice";
+import ImageUpload from "./ImageUpload";
 
 function Chat() {
   const user = useSelector(selectUser);
@@ -56,6 +57,7 @@ function Chat() {
           />
         ))}
       </div>
+      {/* <ImageUpload username={user.displayName} /> */}
       <div className="chat__message">
         <form className="form" action="submit">
           <input
