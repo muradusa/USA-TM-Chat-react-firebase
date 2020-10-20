@@ -10,15 +10,16 @@ function ImageUpload({ username }) {
   const [progress, setProgress] = useState("");
 
   const handleChange = (e) => {
-    if (e.target.file[0]) {
-      setImage(e.target.file[0]);
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+      console.log(image);
     }
   };
 
   const handleUpload = () => {
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
-      "state_chnage",
+      "state_changed",
       (snapshot) => {
         //progress function ...
         const progress = Math.round(
@@ -36,7 +37,7 @@ function ImageUpload({ username }) {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
-            db.collection("posts").add({
+            db.collection("channels").doc("channelId").collection("posts").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               caption: caption,
               imageUrl: url,
