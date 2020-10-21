@@ -52,6 +52,8 @@ function Chat() {
     }
   }, [channelId]);
 
+  console.log(posts);
+
   return (
     <div className="chat">
       <div className="chat__header">
@@ -72,15 +74,9 @@ function Chat() {
       </div> */}
       <div className="chat__body">
         {posts.map((post) => (
-          //   <Message
-          //     message={message.message}
-          //     user={message.user}
-          //     timestamp={message.timestamp}
-          //   />
-          // ))}
           <Message
-            message={post.caption}
-            user={post.username}
+            message={post.message}
+            user={post.user}
             timestamp={post.timestamp}
             imgUrl={post.imageUrl}
           />

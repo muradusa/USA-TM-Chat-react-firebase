@@ -3,11 +3,17 @@ import db, { storage } from "./firebase";
 import React, { useState } from "react";
 import "./ImageUpload.css";
 import firebase from "firebase";
+import { useSelector, useDispatch } from "react-redux";
+import { selectChannelId, selectChannelName } from "./features/appSlice";
+import { selectUser } from "./features/userSlice";
 
-function ImageUpload({ username }) {
+function ImageUpload() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState("null");
   const [progress, setProgress] = useState("");
+  const channelId = useSelector(selectChannelId);
+  const channelName = useSelector(selectChannelName);
+  const user = useSelector(selectUser);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -37,11 +43,11 @@ function ImageUpload({ username }) {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
-            db.collection("channels").doc("channelId").collection("posts").add({
+            db.collection("channels").doc(channelId).collection("posts").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              caption: caption,
+              message: caption,
               imageUrl: url,
-              username: username,
+              user: user,
             });
             setProgress(0);
             setCaption("");
