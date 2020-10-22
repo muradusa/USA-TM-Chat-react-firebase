@@ -7,23 +7,26 @@ import { useSelector, useDispatch } from "react-redux";
 function Message({ message, timestamp, user, imgUrl }) {
   return (
     <div className="message">
-      <div className="message__avatar">
-        <Avatar src={user.photo} />
-      </div>
-      <div className="message__body">
-        <div className="message__user">
-          <p>{user.displayName}</p>
-          {/* <p>{user}</p> */}
-          <small>{new Date(timestamp?.toDate()).toUTCString()}</small>
+      <div className="message__info">
+        <div className="message__avatar">
+          <Avatar src={user.photo} />
         </div>
-        <div className="message__chat">
-          <p>{message}</p>
+        <div className="message__body">
+          <div className="message__user">
+            <p>{user.displayName}</p>
+            {/* <p>{user}</p> */}
+            <small>{new Date(timestamp?.toDate()).toUTCString()}</small>
+          </div>
+          <div className="message__chat">
+            <p>{message}</p>
+          </div>
         </div>
       </div>
-      {/* <div
+
+      <div
         style={{ backgroundImage: `url(${imgUrl})` }}
         className="message__img"
-      ></div> */}
+      ></div>
     </div>
   );
 }

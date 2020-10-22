@@ -8,51 +8,35 @@ import { useEffect } from "react";
 import db from "./firebase";
 import firebase from "firebase";
 import { selectUser } from "./features/userSlice";
-import ImageUpload from "./ImageUpload";
 
 function Chat() {
   const user = useSelector(selectUser);
   const channelName = useSelector(selectChannelName);
   const channelId = useSelector(selectChannelId);
-  // const [input, setInput] = useState("");
-  // const [messages, setMessages] = useState([]);
-  const [posts, setPosts] = useState([]);
+  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState([]);
 
-  // const submitMessage = (e) => {
-  //   e.preventDefault();
-  //   db.collection("channels").doc(channelId).collection("messages").add({
-  //     message: input,
-  //     user: user,
-  //     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-  //   });
-  //   setInput("");
-  // };
-
-  // useEffect(() => {
-  //   if (channelId) {
-  //     db.collection("channels")
-  //       .doc(channelId)
-  //       .collection("messages")
-  //       .orderBy("timestamp", "asc")
-  //       .onSnapshot((snapshot) =>
-  //         setMessages(snapshot.docs.map((doc) => doc.data()))
-  //       );
-  //   }
-  // }, [channelId]);
+  const submitMessage = (e) => {
+    e.preventDefault();
+    db.collection("channels").doc(channelId).collection("messages").add({
+      message: input,
+      user: user,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setInput("");
+  };
 
   useEffect(() => {
     if (channelId) {
       db.collection("channels")
-        .doc("channelId")
-        .collection("posts")
+        .doc(channelId)
+        .collection("messages")
         .orderBy("timestamp", "asc")
         .onSnapshot((snapshot) =>
-          setPosts(snapshot.docs.map((doc) => doc.data()))
+          setMessages(snapshot.docs.map((doc) => doc.data()))
         );
     }
   }, [channelId]);
-
-  console.log(posts);
 
   return (
     <div className="chat">
@@ -63,7 +47,7 @@ function Chat() {
             : "Please select a channel to chat or create a new one"}
         </h2>
       </div>
-      {/* <div className="chat__body">
+      <div className="chat__body">
         {messages.map((message) => (
           <Message
             message={message.message}
@@ -71,21 +55,10 @@ function Chat() {
             timestamp={message.timestamp}
           />
         ))}
-      </div> */}
-      <div className="chat__body">
-        {posts.map((post) => (
-          <Message
-            message={post.message}
-            user={post.user}
-            timestamp={post.timestamp}
-            imgUrl={post.imageUrl}
-          />
-        ))}
       </div>
 
       <div className="chat__message">
-        <ImageUpload />
-        {/* <form className="form" action="submit">
+        <form className="form" action="submit">
           <input
             className="input"
             type="text"
@@ -104,7 +77,7 @@ function Chat() {
           >
             submit
           </button>
-        </form> */}
+        </form>
       </div>
     </div>
   );

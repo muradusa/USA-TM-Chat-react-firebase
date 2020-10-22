@@ -65,9 +65,12 @@ function ImageUpload() {
         placeholder="Enter a  caption"
         onChange={(e) => setCaption(e.target.value)}
         value={caption}
+        disabled={!channelId}
       />
-      <input type="file" onChange={handleChange} />
-      <Button onClick={handleUpload}>Upload</Button>
+      <input type="file" disabled={!channelId} onChange={handleChange} />
+      <Button disabled={!channelId} onClick={handleUpload}>
+        Upload
+      </Button>
     </div>
   );
 }

@@ -1,12 +1,13 @@
 .message {
   display: flex;
+  flex-direction: column;
+}
+
+.message__info {
+  display: flex;
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-.message:hover {
-  background-color: white;
-  color: black;
 }
 
 .message__avatar {
@@ -33,13 +34,20 @@
   font-weight: 600;
 }
 
-.message__body:hover {
+/* .message__body:hover {
   color: black;
-}
+} */
 
 .message__chat p {
   margin-top: 5px;
   color: white;
   font-family: "Times New Roman", Times, serif;
   font-size: larger;
+}
+
+.message__img {
+  height: 400px;
+  width: 400px;
+  background-size: contain;
+  margin-left: 40px;
 }
