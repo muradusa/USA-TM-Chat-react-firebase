@@ -106,7 +106,12 @@ function Chat1() {
             disabled={!channelId}
           />
           <input type="file" disabled={!channelId} onChange={handleChange} />
-          <Button disabled={!channelId} onClick={handleUpload}>
+          <Button
+            className="button"
+            disabled={!channelId}
+            onClick={handleUpload}
+            // hidden
+          >
             Upload
           </Button>
         </div>
