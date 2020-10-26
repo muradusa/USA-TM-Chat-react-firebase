@@ -26,8 +26,12 @@ function Chat1() {
       console.log(image);
     }
   };
+  const handleCaption = (e) => {
+    setCaption(e.target.value);
+  };
 
-  const handleUpload = () => {
+  const handleUpload = (e) => {
+    e.preventDefault();
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -40,7 +44,6 @@ function Chat1() {
       },
       (error) => {
         console.log(error);
-        alert(error.message);
       },
       () => {
         storage
@@ -101,7 +104,7 @@ function Chat1() {
           <input
             type="text"
             placeholder="Enter a  caption"
-            onChange={(e) => setCaption(e.target.value)}
+            onChange={handleCaption}
             value={caption}
             disabled={!channelId}
           />
@@ -110,7 +113,7 @@ function Chat1() {
             className="button"
             disabled={!channelId}
             onClick={handleUpload}
-            // hidden
+            hidden
           >
             Upload
           </Button>
