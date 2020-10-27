@@ -30,6 +30,16 @@ function Chat1() {
     setCaption(e.target.value);
   };
 
+  const submitMessage = (e) => {
+    e.preventDefault();
+    db.collection("channels").doc(channelId).collection("posts").add({
+      user: user,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      message: caption,
+    });
+    setCaption("");
+  };
+
   const handleUpload = (e) => {
     e.preventDefault();
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -53,9 +63,9 @@ function Chat1() {
           .then((url) => {
             db.collection("channels").doc(channelId).collection("posts").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-              message: caption,
               imageUrl: url,
               user: user,
+              message: caption,
             });
             setProgress(0);
             setCaption("");
@@ -99,25 +109,40 @@ function Chat1() {
       </div>
 
       <div className="chat__message">
-        <div className="imageUpload">
-          <progress value={progress} max="100"></progress>
-          <input
-            type="text"
-            placeholder="Enter a  caption"
-            onChange={handleCaption}
-            value={caption}
-            disabled={!channelId}
-          />
-          <input type="file" disabled={!channelId} onChange={handleChange} />
-          <Button
-            className="button"
-            disabled={!channelId}
-            onClick={handleUpload}
-            hidden
-          >
-            Upload
-          </Button>
-        </div>
+        <form className="form" action="submit">
+          <div className="message__caption">
+            <input
+              type="text"
+              placeholder="Enter a  caption"
+              onChange={handleCaption}
+              value={caption}
+              disabled={!channelId}
+            />
+            <button
+              hidden
+              type="submit"
+              onClick={submitMessage}
+              disabled={!channelId}
+            >
+              submit
+            </button>
+          </div>
+
+          <div className="message__upload">
+            <input type="file" disabled={!channelId} onChange={handleChange} />
+            <progress value={progress} max="100"></progress>
+            <Button
+              className="button"
+              disabled={!image}
+              onClick={handleUpload}
+              hidden
+            >
+              Upload
+            </Button>
+          </div>
+        </form>
+
+        <div className="imageUpload"></div>
       </div>
     </div>
   );

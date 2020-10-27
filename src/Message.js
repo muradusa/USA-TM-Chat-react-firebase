@@ -25,7 +25,7 @@ function Message({ message, timestamp, user, imgUrl }) {
 
       <div
         style={{ backgroundImage: `url(${imgUrl})` }}
-        className="message__img"
+        className={imgUrl ? "message__img" : ""}
       ></div>
     </div>
   );

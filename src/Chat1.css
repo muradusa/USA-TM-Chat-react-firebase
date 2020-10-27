@@ -7,7 +7,7 @@
 .chat__header {
   color: black;
   font-size: 20px;
-  background-color: white;
+  background-color: rgb(221, 214, 214);
   padding: 12px;
   border-radius: 5px;
   margin: 10px;
@@ -17,13 +17,6 @@
   padding-top: 15px;
   flex: 1;
   overflow: scroll;
-}
-
-.chat__message {
-  background-color: white;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -39,23 +32,17 @@
   scrollbar-width: none; /*Firefox */
 }
 
-.form {
-  display: flex;
-}
-
-.input {
-  flex: 1;
-  border: none;
-  border-radius: 10px;
-  margin: 10px;
+.chat__message {
+  background-color: rgb(221, 214, 214);
   padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
 }
 
-.input:hover {
-  border: 0.2px solid gray;
-  cursor: pointer;
-}
-
-.input:active {
+.message__caption input {
+  width: 100%;
   border: none;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
 }

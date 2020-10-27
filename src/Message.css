@@ -47,7 +47,9 @@
 
 .message__img {
   height: 400px;
+
   width: 400px;
+
   background-size: contain;
   margin-left: 40px;
 }
