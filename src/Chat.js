@@ -5,35 +5,83 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import Message from "./Message";
 import { useEffect } from "react";
-import db from "./firebase";
 import firebase from "firebase";
 import { selectUser } from "./features/userSlice";
+import { Button } from "@material-ui/core";
+import db, { storage } from "./firebase";
 
-function Chat() {
+function Chat1() {
   const user = useSelector(selectUser);
   const channelName = useSelector(selectChannelName);
   const channelId = useSelector(selectChannelId);
-  const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [caption, setCaption] = useState("");
+  const [image, setImage] = useState("null");
+  const [progress, setProgress] = useState("");
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+      console.log(image);
+    }
+  };
+  const handleCaption = (e) => {
+    setCaption(e.target.value);
+  };
 
   const submitMessage = (e) => {
     e.preventDefault();
-    db.collection("channels").doc(channelId).collection("messages").add({
-      message: input,
+    db.collection("channels").doc(channelId).collection("posts").add({
       user: user,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      message: caption,
     });
-    setInput("");
+    setCaption("");
+  };
+
+  const handleUpload = (e) => {
+    e.preventDefault();
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        //progress function ...
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            db.collection("channels").doc(channelId).collection("posts").add({
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              imageUrl: url,
+              user: user,
+              message: caption,
+            });
+            setProgress(0);
+            setCaption("");
+            setImage(null);
+          });
+      }
+    );
   };
 
   useEffect(() => {
     if (channelId) {
       db.collection("channels")
         .doc(channelId)
-        .collection("messages")
+        .collection("posts")
         .orderBy("timestamp", "asc")
         .onSnapshot((snapshot) =>
-          setMessages(snapshot.docs.map((doc) => doc.data()))
+          setPosts(snapshot.docs.map((doc) => doc.data()))
         );
     }
   }, [channelId]);
@@ -47,40 +95,57 @@ function Chat() {
             : "Please select a channel to chat or create a new one"}
         </h2>
       </div>
+
       <div className="chat__body">
-        {messages.map((message) => (
+        {posts.map((post) => (
           <Message
-            message={message.message}
-            user={message.user}
-            timestamp={message.timestamp}
+            message={post.message}
+            user={post.user}
+            timestamp={post.timestamp}
+            imgUrl={post.imageUrl}
           />
         ))}
       </div>
 
       <div className="chat__message">
         <form className="form" action="submit">
-          <input
-            className="input"
-            type="text"
-            disabled={!channelId}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder={`Message # ${
-              channelName ? channelName : "Select a channel to start chatting"
-            }`}
-          />
-          <button
-            hidden
-            // type="submit"
-            onClick={submitMessage}
-            disabled={!channelId}
-          >
-            submit
-          </button>
+          <div className="message__caption">
+            <input
+              type="text"
+              placeholder="Enter a  caption"
+              onChange={handleCaption}
+              value={caption}
+              disabled={!channelId}
+            />
+            <button
+              hidden
+              type="submit"
+              onClick={submitMessage}
+              disabled={!channelId}
+            >
+              submit
+            </button>
+          </div>
+
+          <div className="message__upload">
+            <input type="file" disabled={!channelId} onChange={handleChange} />
+
+            <Button
+              className="button"
+              disabled={!image}
+              onClick={handleUpload}
+              hidden
+            >
+              Upload
+            </Button>
+            <progress value={progress} max="100"></progress>
+          </div>
         </form>
+
+        <div className="imageUpload"></div>
       </div>
     </div>
   );
 }
 
-export default Chat;
+export default Chat1;

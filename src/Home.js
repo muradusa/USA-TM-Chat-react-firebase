@@ -4,8 +4,7 @@ import db, { auth } from "./firebase";
 
 import "./Home.css";
 import Sidebar from "./Sidebar";
-// import Chat from "./Chat";
-import Chat1 from "./Chat1";
+import Chat from "./Chat";
 
 function Home() {
   return (
@@ -15,7 +14,7 @@ function Home() {
           <Sidebar />
         </div>
         <div className="home__chat">
-          <Chat1 />
+          <Chat />
         </div>
       </div>
     </div>
