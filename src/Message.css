@@ -46,10 +46,11 @@
 }
 
 .message__img {
-  height: 400px;
+  height: auto;
+  min-height: 250px;
 
-  width: 400px;
-
+  width: auto;
+  background-repeat: no-repeat;
   background-size: contain;
   margin-left: 40px;
 }

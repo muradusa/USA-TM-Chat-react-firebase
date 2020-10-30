@@ -79,7 +79,7 @@ function Chat1() {
       db.collection("channels")
         .doc(channelId)
         .collection("posts")
-        .orderBy("timestamp", "asc")
+        .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) =>
           setPosts(snapshot.docs.map((doc) => doc.data()))
         );
