@@ -148,6 +148,4 @@ function Chat1() {
   );
 }
 
-//Delete later
-
 export default Chat1;
