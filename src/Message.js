@@ -15,7 +15,8 @@ function Message({ message, timestamp, user, imgUrl }) {
           <div className="message__user">
             <p>{user.displayName}</p>
             {/* <p>{user}</p> */}
-            <small>{new Date(timestamp?.toDate()).toUTCString()}</small>
+            {/* <small>{new Date(timestamp?.toDate()).toUTCString()}</small> */}
+            <small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
           </div>
           <div className="message__chat">
             <p>{message}</p>
