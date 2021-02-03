@@ -10,7 +10,7 @@ import { selectUser } from "./features/userSlice";
 import { Button } from "@material-ui/core";
 import db, { storage } from "./firebase";
 
-function Chat1() {
+function Chat() {
   const user = useSelector(selectUser);
   const channelName = useSelector(selectChannelName);
   const channelId = useSelector(selectChannelId);
@@ -112,7 +112,7 @@ function Chat1() {
           <div className="message__caption">
             <input
               type="text"
-              placeholder="Enter a  caption"
+              placeholder="Type your message here and press enter to submit"
               onChange={handleCaption}
               value={caption}
               disabled={!channelId}
@@ -148,4 +148,4 @@ function Chat1() {
   );
 }
 
-export default Chat1;
+export default Chat;

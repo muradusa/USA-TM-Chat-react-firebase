@@ -15,10 +15,18 @@
   margin-left: 10px;
 }
 
+.message__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 20px;
+}
+
 .message__user {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  /* padding-bottom: 3px; */
+  color: rgb(163, 183, 245);
 }
 
 .message__user p {
@@ -30,7 +38,6 @@
 .message__user small {
   font-size: small;
   font-style: italic;
-  color: rgb(235, 230, 230);
   font-weight: 600;
 }
 
@@ -46,10 +53,11 @@
 }
 
 .message__img {
-  height: auto;
-  min-height: 250px;
-
+  height: fit-content;
   width: auto;
+  min-height: 450px;
+  max-width: 450px;
+  border-radius: 10px;
   background-repeat: no-repeat;
   background-size: contain;
   margin-left: 40px;
