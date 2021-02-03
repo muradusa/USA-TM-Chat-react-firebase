@@ -20,3 +20,5 @@ const storage = firebase.storage();
 export { provider, auth, storage };
 
 export default db;
+
+// delete later'
