@@ -1,14 +1,13 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBUgQ38deVDX6Tg7QfFdw0XtHqTByy--vQ",
-  authDomain: "discord-clone-9079e.firebaseapp.com",
-  databaseURL: "https://discord-clone-9079e.firebaseio.com",
-  projectId: "discord-clone-9079e",
-  storageBucket: "discord-clone-9079e.appspot.com",
-  messagingSenderId: "26475339994",
-  appId: "1:26475339994:web:036ac040efcbfb225985e3",
-  measurementId: "G-B8WLC2LDQB",
+  apiKey: "AIzaSyDGPdw_K6hQ5CmGw_m-1H69s8ij5hlkpgw",
+  authDomain: "cholukov-family-chat.firebaseapp.com",
+  projectId: "cholukov-family-chat",
+  storageBucket: "cholukov-family-chat.appspot.com",
+  messagingSenderId: "335289675647",
+  appId: "1:335289675647:web:8ad89fb1be34631db4f44a",
+  measurementId: "G-R26SVHHXM6",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
