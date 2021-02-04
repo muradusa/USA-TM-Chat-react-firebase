@@ -75,8 +75,10 @@ function Chat() {
   };
 
   useEffect(() => {
-    alert("Please select a channel on the left to chat");
-  });
+    const wait = setTimeout(() => {
+      alert("Please select a channel on the left");
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     if (channelId) {
