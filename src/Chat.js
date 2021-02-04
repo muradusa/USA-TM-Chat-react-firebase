@@ -75,6 +75,10 @@ function Chat() {
   };
 
   useEffect(() => {
+    alert("Please select a channel on the left to chat");
+  });
+
+  useEffect(() => {
     if (channelId) {
       db.collection("channels")
         .doc(channelId)
@@ -107,43 +111,49 @@ function Chat() {
         ))}
       </div>
 
-      <div className="chat__message">
-        <form className="form" action="submit">
-          <div className="message__caption">
-            <input
-              type="text"
-              placeholder="Type your message here and press enter to submit"
-              onChange={handleCaption}
-              value={caption}
-              disabled={!channelId}
-            />
-            <button
-              hidden
-              type="submit"
-              onClick={submitMessage}
-              disabled={!channelId}
-            >
-              submit
-            </button>
-          </div>
+      {channelName ? (
+        <div className="chat__message">
+          <form className="form" action="submit">
+            <div className="message__caption">
+              <input
+                type="text"
+                placeholder="Type your message here and press enter to submit"
+                onChange={handleCaption}
+                value={caption}
+                disabled={!channelId}
+              />
+              <button
+                hidden
+                type="submit"
+                onClick={submitMessage}
+                disabled={!channelId}
+              >
+                submit
+              </button>
+            </div>
 
-          <div className="message__upload">
-            <input type="file" disabled={!channelId} onChange={handleChange} />
+            <div className="message__upload">
+              <input
+                type="file"
+                disabled={!channelId}
+                onChange={handleChange}
+              />
 
-            <Button
-              className="button"
-              disabled={!image}
-              onClick={handleUpload}
-              hidden
-            >
-              Upload
-            </Button>
-            <progress value={progress} max="100"></progress>
-          </div>
-        </form>
-
+              <Button
+                className="button"
+                disabled={!image}
+                onClick={handleUpload}
+                hidden
+              >
+                Upload
+              </Button>
+              <progress value={progress} max="100"></progress>
+            </div>
+          </form>
+        </div>
+      ) : (
         <div className="imageUpload"></div>
-      </div>
+      )}
     </div>
   );
 }
