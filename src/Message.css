@@ -26,7 +26,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: rgb(163, 183, 245);
+  color: rgb(66, 84, 136);
 }
 
 .message__user p {
@@ -41,24 +41,24 @@
   font-weight: 600;
 }
 
-/* .message__body:hover {
-  color: black;
-} */
-
 .message__chat p {
   margin-top: 5px;
-  color: white;
+
+  color: rgb(31, 28, 36);
   font-family: "Times New Roman", Times, serif;
   font-size: larger;
 }
 
 .message__img {
-  height: fit-content;
+  /* display: flex;
+  justify-content: flex-start; */
   width: auto;
-  min-height: 450px;
+  min-height: 250px;
+  max-height: 500px;
   max-width: 450px;
   border-radius: 10px;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center center;
   margin-left: 40px;
 }

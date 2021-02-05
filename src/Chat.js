@@ -95,11 +95,11 @@ function Chat() {
   return (
     <div className="chat">
       <div className="chat__header">
-        <h2>
+        <h3>
           {channelName
             ? `# ${channelName}`
             : "Please select a channel to chat or create a new one"}
-        </h2>
+        </h3>
       </div>
 
       <div className="chat__body">
@@ -139,6 +139,7 @@ function Chat() {
                 type="file"
                 disabled={!channelId}
                 onChange={handleChange}
+                className="fileInput"
               />
 
               <Button

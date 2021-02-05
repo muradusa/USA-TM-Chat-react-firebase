@@ -37,7 +37,7 @@ function Sidebar() {
       <div className="sidebar__header">
         <h1># Channels</h1>
         <IconButton className="add" onClick={handleAddChannel}>
-          <Add style={{ fontSize: 40, color: "white" }} />
+          <Add style={{ fontSize: 40 }} />
         </IconButton>
       </div>
       <div className="sidebar__channels">
