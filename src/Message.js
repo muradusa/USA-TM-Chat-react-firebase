@@ -3,8 +3,10 @@ import React from "react";
 import { selectUser } from "./features/userSlice";
 import "./Message.css";
 import { useSelector, useDispatch } from "react-redux";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 function Message({ message, timestamp, user, imgUrl }) {
+  const handle = useFullScreenHandle();
   return (
     <div className="message">
       <div className="message__info">
@@ -22,11 +24,13 @@ function Message({ message, timestamp, user, imgUrl }) {
           </div>
         </div>
       </div>
-
-      <div
-        style={{ backgroundImage: `url(${imgUrl})` }}
-        className={imgUrl ? "message__img" : ""}
-      ></div>
+      <FullScreen handle={handle}>
+        <button onClick={handle.enter}>Enter fullscreen</button>
+        <div
+          style={{ backgroundImage: `url(${imgUrl})` }}
+          className={imgUrl ? "message__img" : ""}
+        ></div>
+      </FullScreen>
     </div>
   );
 }

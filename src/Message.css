@@ -49,13 +49,22 @@
   font-size: larger;
 }
 
-.message__img {
-  /* display: flex;
-  justify-content: flex-start; */
+/* .message__img {
   width: auto;
   min-height: 250px;
   max-height: 500px;
   max-width: 450px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  margin-left: 40px;
+} */
+
+.message__img {
+  width: auto;
+  height: auto;
+  min-height: 450px;
   border-radius: 10px;
   background-repeat: no-repeat;
   background-size: contain;
