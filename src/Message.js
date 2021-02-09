@@ -25,8 +25,8 @@ function Message({ message, timestamp, user, imgUrl }) {
         </div>
       </div>
       <FullScreen handle={handle}>
-        <button onClick={handle.enter}>Enter fullscreen</button>
         <div
+          onClick={handle.enter}
           style={{ backgroundImage: `url(${imgUrl})` }}
           className={imgUrl ? "message__img" : ""}
         ></div>
