@@ -16,13 +16,13 @@ function Chat() {
   const channelId = useSelector(selectChannelId);
   const [posts, setPosts] = useState([]);
   const [caption, setCaption] = useState("");
+
   const [image, setImage] = useState("null");
   const [progress, setProgress] = useState("");
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
-      console.log(image);
     }
   };
   const handleCaption = (e) => {
