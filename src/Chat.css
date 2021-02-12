@@ -64,3 +64,10 @@
 .fileInput:focus {
   outline: rgb(201, 248, 248);
 }
+
+.message__upload .MuiButton-root {
+  color: rgb(185, 247, 247);
+}
+.message__upload .MuiButton-root:hover {
+  color: white;
+}
