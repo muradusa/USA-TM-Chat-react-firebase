@@ -68,7 +68,11 @@ function ImageUpload() {
         disabled={!channelId}
       />
       <input type="file" disabled={!channelId} onChange={handleChange} />
-      <Button disabled={!channelId} onClick={handleUpload}>
+      <Button
+        className="uploadButton"
+        disabled={!channelId}
+        onClick={handleUpload}
+      >
         Upload
       </Button>
     </div>
