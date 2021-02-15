@@ -9,6 +9,7 @@ import firebase from "firebase";
 import { selectUser } from "./features/userSlice";
 import { Button } from "@material-ui/core";
 import db, { storage } from "./firebase";
+import WebcamCapture from "./WebcamCapture";
 
 function Chat() {
   const user = useSelector(selectUser);
@@ -111,6 +112,9 @@ function Chat() {
             imgUrl={post.imageUrl}
           />
         ))}
+        <div className="camera">
+          <WebcamCapture />
+        </div>
       </div>
 
       {channelName ? (
