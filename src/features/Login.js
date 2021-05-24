@@ -8,13 +8,27 @@ function Login() {
   const loginUser = () => {
     auth.signInWithPopup(provider).catch((error) => alert(error.message));
   };
+  const loginGuest = () => {
+    auth.signInAnonymously().catch((error) => alert(error.message));
+  };
 
   return (
     <div className="user">
       <img src={logo} alt="" />
-      <Button variant="contained" color="primary" onClick={loginUser}>
-        Log In with Google
-      </Button>
+
+      <div style={{ display: "flex" }}>
+        <Button
+          style={{ marginRight: "5px" }}
+          variant="contained"
+          color="primary"
+          onClick={loginUser}
+        >
+          Log In with Google
+        </Button>
+        <Button variant="contained" color="primary" onClick={loginGuest}>
+          Log in as a guest
+        </Button>
+      </div>
     </div>
   );
 }

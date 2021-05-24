@@ -112,9 +112,9 @@ function Chat() {
             imgUrl={post.imageUrl}
           />
         ))}
-        <div className="camera">
+        {/* <div className="camera">
           <WebcamCapture />
-        </div>
+        </div> */}
       </div>
 
       {channelName ? (
